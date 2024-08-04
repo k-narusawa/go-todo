@@ -1,5 +1,11 @@
+dev:
+	docker-compose up
+
 up: 
 	docker-compose up -d
+
+down:
+	docker-compose down
 
 test:
 	go test -cover ./... -count=1

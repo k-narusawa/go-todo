@@ -3,8 +3,8 @@ package user_test
 import (
 	"go-todo/domain"
 	"go-todo/domain/value"
-	"go-todo/user"
-	"go-todo/user/mocks"
+	"go-todo/usecase/mocks"
+	"go-todo/usecase/user"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

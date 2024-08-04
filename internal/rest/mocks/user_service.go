@@ -2,7 +2,7 @@ package mocks
 
 import (
 	"go-todo/domain"
-	"go-todo/user"
+	"go-todo/usecase/user"
 
 	"github.com/stretchr/testify/mock"
 )

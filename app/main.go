@@ -3,8 +3,8 @@ package main
 import (
 	"go-todo/internal/repository"
 	"go-todo/internal/rest"
-	"go-todo/todo"
-	"go-todo/user"
+	"go-todo/usecase/todo"
+	"go-todo/usecase/user"
 	"log"
 	"os"
 

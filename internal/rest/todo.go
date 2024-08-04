@@ -2,7 +2,7 @@ package rest
 
 import (
 	"go-todo/domain/value"
-	"go-todo/todo"
+	"go-todo/usecase/todo"
 
 	"go-todo/internal/middleware"
 
