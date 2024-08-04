@@ -9,4 +9,4 @@ bin/
 tmp_app/
 .env
 tmp/
-cover/
+cover.*
