@@ -14,7 +14,7 @@ make up
 make test
 ```
 
-## Docker
+### Docker
 
 ```shell
 docker build -t go-rest-template .
