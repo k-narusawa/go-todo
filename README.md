@@ -7,3 +7,9 @@ Golang で簡易な RestAPI を作成する時用のテンプレート
 ```shell
 make up
 ```
+
+## テスト
+
+```shell
+make test
+```
