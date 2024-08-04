@@ -1,4 +1,4 @@
-profile: cover.short.profile,cover.long.profile
+profile: cover/cover.short.profile,cover/cover.long.profile
 local-prefix: "github.com/k-narusawa/go-rest-template"
 # threshold:
 #   file: 100
