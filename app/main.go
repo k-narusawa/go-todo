@@ -27,7 +27,7 @@ func main() {
 	userSvc := user.NewService(userRepo)
 	todoSvc := todo.NewService(todoRepo, userRepo)
 
-	rest.NewUserHandler(e, *userSvc)
+	rest.NewUserHandler(e, userSvc)
 	rest.NewToDoHandler(e, *todoSvc)
 
 	address := os.Getenv("SERVER_ADDRESS")

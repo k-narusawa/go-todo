@@ -1,19 +1,27 @@
 package rest
 
 import (
+	"go-todo/domain"
 	"go-todo/domain/value"
 	"go-todo/user"
 
 	"github.com/labstack/echo/v4"
 )
 
-type UserHandler struct {
-	userService user.Service
+type UserService interface {
+	Register(user.RegisterUserInput) (*domain.User, error)
+	Get(user.GetUserInput) (*domain.User, error)
+	GetAll() ([]*domain.User, error)
+	Change(user.ChangeUserInput) (*domain.User, error)
 }
 
-func NewUserHandler(e *echo.Echo, userService user.Service) {
+type UserHandler struct {
+	UserService UserService
+}
+
+func NewUserHandler(e *echo.Echo, userService UserService) {
 	handler := &UserHandler{
-		userService: userService,
+		UserService: userService,
 	}
 
 	e.POST("/users", handler.Register)
@@ -28,7 +36,7 @@ func (h *UserHandler) Register(c echo.Context) error {
 		return err
 	}
 
-	user, err := h.userService.Register(*in)
+	user, err := h.UserService.Register(*in)
 	if err != nil {
 		return err
 	}
@@ -41,7 +49,7 @@ func (h *UserHandler) Get(c echo.Context) error {
 	in := user.GetUserInput{
 		UserID: value.OfUserID(userID),
 	}
-	user, err := h.userService.Get(in)
+	user, err := h.UserService.Get(in)
 	if err != nil {
 		return err
 	}
@@ -50,7 +58,7 @@ func (h *UserHandler) Get(c echo.Context) error {
 }
 
 func (h *UserHandler) GetAll(c echo.Context) error {
-	users, err := h.userService.GetAll()
+	users, err := h.UserService.GetAll()
 	if err != nil {
 		return err
 	}
@@ -66,7 +74,7 @@ func (h *UserHandler) Change(c echo.Context) error {
 	}
 	in.UserID = value.OfUserID(userId)
 
-	user, err := h.userService.Change(in)
+	user, err := h.UserService.Change(in)
 	if err != nil {
 		return err
 	}
