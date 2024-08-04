@@ -49,12 +49,12 @@ func (s *Service) GetAll() ([]*domain.User, error) {
 	return s.userRepo.FindAll()
 }
 
-type UpdateUserInput struct {
+type ChangeUserInput struct {
 	UserID value.UserID `json:"user_id"`
 	Name   string       `json:"name"`
 }
 
-func (s *Service) Update(in UpdateUserInput) (*domain.User, error) {
+func (s *Service) Change(in ChangeUserInput) (*domain.User, error) {
 	user, err := s.userRepo.FindByID(in.UserID)
 	if err != nil {
 		return nil, err

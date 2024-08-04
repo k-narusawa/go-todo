@@ -5,14 +5,6 @@ import (
 	"go-todo/domain/value"
 )
 
-// type ToDoRepository interface {
-// 	FindAll() ([]domain.ToDo, error)
-// 	FindByID(id value.ToDoID) (*domain.ToDo, error)
-// 	Store(todo domain.ToDo) error
-// 	Update(id value.ToDoID, todo domain.ToDo) error
-// 	Delete(id value.ToDoID) error
-// }
-
 type ToDoRepository struct{}
 
 func NewToDoRepository() *ToDoRepository {

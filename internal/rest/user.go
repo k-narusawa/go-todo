@@ -59,14 +59,14 @@ func (h *UserHandler) GetAll(c echo.Context) error {
 }
 
 func (h *UserHandler) Change(c echo.Context) error {
-	in := user.UpdateUserInput{}
+	in := user.ChangeUserInput{}
 	userId := c.Param("user_id")
 	if err := c.Bind(&in); err != nil {
 		return err
 	}
 	in.UserID = value.OfUserID(userId)
 
-	user, err := h.userService.Update(in)
+	user, err := h.userService.Change(in)
 	if err != nil {
 		return err
 	}
