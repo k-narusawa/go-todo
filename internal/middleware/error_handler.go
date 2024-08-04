@@ -8,7 +8,7 @@ import (
 	"github.com/labstack/gommon/log"
 )
 
-func GlobalErrorHandler(err error, c echo.Context) {
+func HandleError(c echo.Context, err error) error {
 	for errors.Unwrap(err) != nil {
 		err = errors.Unwrap(err)
 	}
@@ -17,15 +17,13 @@ func GlobalErrorHandler(err error, c echo.Context) {
 	case domain.ErrUserNotFound:
 		log.Warn(err)
 		domainError := domain.ToDomainError(err)
-		c.JSON(domain.StatusMap[domainError.Code], domainError)
+		return c.JSON(domain.StatusMap[domainError.Code], domainError)
 	case domain.ErrToDoNotFound:
 		log.Warn(err)
 		domainError := domain.ToDomainError(err)
-		c.JSON(domain.StatusMap[domainError.Code], domainError)
+		return c.JSON(domain.StatusMap[domainError.Code], domainError)
 	default:
 		log.Error(err)
-		c.JSON(500, domain.ToDomainError(err))
+		return c.JSON(500, domain.ToDomainError(err))
 	}
-
-	c.Echo().DefaultHTTPErrorHandler(err, c)
 }

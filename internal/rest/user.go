@@ -3,6 +3,7 @@ package rest
 import (
 	"go-todo/domain"
 	"go-todo/domain/value"
+	"go-todo/internal/middleware"
 	"go-todo/user"
 
 	"github.com/labstack/echo/v4"
@@ -33,12 +34,12 @@ func NewUserHandler(e *echo.Echo, userService UserService) {
 func (h *UserHandler) Register(c echo.Context) error {
 	in := new(user.RegisterUserInput)
 	if err := c.Bind(&in); err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	user, err := h.UserService.Register(*in)
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(201, user)
@@ -51,7 +52,7 @@ func (h *UserHandler) Get(c echo.Context) error {
 	}
 	user, err := h.UserService.Get(in)
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(200, user)
@@ -60,7 +61,7 @@ func (h *UserHandler) Get(c echo.Context) error {
 func (h *UserHandler) GetAll(c echo.Context) error {
 	users, err := h.UserService.GetAll()
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(200, users)
@@ -76,7 +77,7 @@ func (h *UserHandler) Change(c echo.Context) error {
 
 	user, err := h.UserService.Change(in)
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(200, user)

@@ -4,6 +4,8 @@ import (
 	"go-todo/domain/value"
 	"go-todo/todo"
 
+	"go-todo/internal/middleware"
+
 	"github.com/labstack/echo/v4"
 )
 
@@ -26,13 +28,13 @@ func NewToDoHandler(e *echo.Echo, todoService todo.Service) {
 func (h *ToDoHandler) Create(c echo.Context) error {
 	in := todo.CreateToDoInput{}
 	if err := c.Bind(&in); err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 	in.UserID = value.OfUserID(c.Param("user_id"))
 
 	todo, err := h.todoService.Create(in)
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(200, todo)
@@ -43,7 +45,7 @@ func (h *ToDoHandler) FindByUserId(c echo.Context) error {
 
 	todos, err := h.todoService.FindByUserId(userId)
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(200, todos)
@@ -55,14 +57,14 @@ func (h *ToDoHandler) ChangeToDoDone(c echo.Context) error {
 
 	in := todo.ChangeStatusInput{}
 	if err := c.Bind(&in); err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 	in.UserID = userId
 	in.ToDoID = todoId
 
 	todo, err := h.todoService.ChangeToDoDone(in)
 	if err != nil {
-		return err
+		return middleware.HandleError(c, err)
 	}
 
 	return c.JSON(200, todo)

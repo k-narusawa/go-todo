@@ -1,7 +1,6 @@
 package main
 
 import (
-	restMiddleware "go-todo/internal/middleware"
 	"go-todo/internal/repository"
 	"go-todo/internal/rest"
 	"go-todo/todo"
@@ -20,7 +19,6 @@ func main() {
 
 	e.Use(middleware.CORS())
 	e.Use(middleware.Logger())
-	e.HTTPErrorHandler = restMiddleware.GlobalErrorHandler
 
 	userRepo := repository.NewUserRepository()
 	todoRepo := repository.NewToDoRepository()
