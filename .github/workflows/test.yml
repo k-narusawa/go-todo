@@ -23,3 +23,5 @@ jobs:
         with:
           profile: cover.out
           local-prefix: github.com/k-narusawa/go-rest-template
+          git-token: ${{ github.ref_name == 'main' && secrets.GITHUB_TOKEN || '' }}
+          git-branch: badges
