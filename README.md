@@ -13,3 +13,10 @@ make up
 ```shell
 make test
 ```
+
+## Docker
+
+```shell
+docker build -t go-rest-template .
+docker run -p 8080:8080 go-rest-template
+```
