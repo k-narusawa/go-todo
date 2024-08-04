@@ -7,8 +7,9 @@ up:
 down:
 	docker-compose down
 
-test:
-	go test -cover ./... -count=1
+test: 
+	go test -timeout=3s -race -count=10 -failfast -shuffle=on -short ./... -coverprofile=./cover/cover.short.profile -covermode=atomic -coverpkg=./...
+	go test -timeout=10s -race -count=1 -failfast  -shuffle=on ./... -coverprofile=./cover/cover.long.profile -covermode=atomic -coverpkg=./...
 
 testv:
 	go test -v ./... -count=1 -cover
