@@ -1,5 +1,5 @@
 up: 
-	cd app && go run main.go
+	docker-compose up -d
 
 test:
 	go test -cover ./... -count=1
@@ -14,3 +14,6 @@ build:
 		-o engine \
 		./app/
 	@ echo "done"
+
+dev-build:
+	docker build -f Dockerfile.dev -t go-rest-template .

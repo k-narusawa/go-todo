@@ -28,9 +28,15 @@ func main() {
 	rest.NewUserHandler(e, userSvc)
 	rest.NewToDoHandler(e, *todoSvc)
 
+	e.GET("/health", healthCheck)
+
 	address := os.Getenv("SERVER_ADDRESS")
 	if address == "" {
 		address = defaultAddress
 	}
 	log.Fatal(e.Start(address))
+}
+
+func healthCheck(c echo.Context) error {
+	return c.String(200, "OK")
 }
