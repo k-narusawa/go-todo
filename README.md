@@ -1,6 +1,6 @@
 # go-rest-template
 
-![coverage](https://raw.githubusercontent.com/org/project/badges/.badges/main/coverage.svg)
+![coverage](https://raw.githubusercontent.com/k-narusawa/go-rest-template/badges/.badges/main/coverage.svg)
 
 Golang で簡易な RestAPI を作成用のテンプレート
 
