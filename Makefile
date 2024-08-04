@@ -7,9 +7,12 @@ up:
 down:
 	docker-compose down
 
-test: 
+test-ci:
 	go test -timeout=3s -race -count=10 -failfast -shuffle=on -short ./... -coverprofile=./cover.short.profile -covermode=atomic -coverpkg=./...
 	go test -timeout=10s -race -count=1 -failfast  -shuffle=on ./... -coverprofile=./cover.long.profile -covermode=atomic -coverpkg=./...
+
+test: 
+	make test-ci
 	rm ./cover.short.profile
 	rm ./cover.long.profile
 
