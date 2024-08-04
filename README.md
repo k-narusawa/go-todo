@@ -1,6 +1,6 @@
 # go-rest-template
 
-Golang で簡易な RestAPI を作成する時用のテンプレート
+Golang で簡易な RestAPI を作成用のテンプレート
 
 ## 起動
 
@@ -13,6 +13,8 @@ make up
 ```shell
 make test
 ```
+
+## 補足
 
 ### Docker
 
