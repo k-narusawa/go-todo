@@ -10,3 +10,4 @@ tmp_app/
 .env
 tmp/
 cover.*
+out/

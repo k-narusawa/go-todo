@@ -12,7 +12,8 @@ test-ci:
 	go test -timeout=10s -race -count=1 -failfast  -shuffle=on ./... -coverprofile=./cover.long.profile -covermode=atomic -coverpkg=./...
 
 test: 
-	go test -v ./... -count=1 -cover
+	go test -v ./... -count=1 -cover -coverprofile=out/coverage.out
+	go tool cover -html=out/coverage.out -o out/coverage.html
 
 build:
 	@ printf "Building aplication... "
