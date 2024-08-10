@@ -1,10 +1,10 @@
 package rest_test
 
 import (
-	"go-rest-template/domain"
-	"go-rest-template/domain/value"
-	"go-rest-template/internal/rest"
-	"go-rest-template/internal/rest/mocks"
+	"go-app-template/domain"
+	"go-app-template/domain/value"
+	"go-app-template/internal/rest"
+	"go-app-template/internal/rest/mocks"
 	"net/http"
 	"net/http/httptest"
 	"strings"

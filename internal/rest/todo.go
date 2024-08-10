@@ -1,11 +1,11 @@
 package rest
 
 import (
-	"go-rest-template/domain"
-	"go-rest-template/domain/value"
-	"go-rest-template/usecase/todo"
+	"go-app-template/domain"
+	"go-app-template/domain/value"
+	"go-app-template/usecase/todo"
 
-	"go-rest-template/internal/middleware"
+	"go-app-template/internal/middleware"
 
 	"github.com/labstack/echo/v4"
 )

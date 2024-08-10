@@ -1,8 +1,8 @@
 package mocks
 
 import (
-	"go-rest-template/domain"
-	"go-rest-template/domain/value"
+	"go-app-template/domain"
+	"go-app-template/domain/value"
 
 	"github.com/stretchr/testify/mock"
 )

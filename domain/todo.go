@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"go-rest-template/domain/value"
+	"go-app-template/domain/value"
 )
 
 type ToDo struct {

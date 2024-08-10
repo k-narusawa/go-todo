@@ -1,6 +1,6 @@
-# go-rest-template
+# go-app-template
 
-![coverage](https://raw.githubusercontent.com/k-narusawa/go-rest-template/badges/.badges/main/coverage.svg)
+![coverage](https://raw.githubusercontent.com/k-narusawa/go-app-template/badges/.badges/main/coverage.svg)
 
 Golang で簡易な RestAPI を作成用のテンプレート
 
@@ -22,6 +22,6 @@ make test
 ### Docker
 
 ```shell
-docker build -t go-rest-template .
-docker run -p 8080:8080 go-rest-template
+docker build -t go-app-template .
+docker run -p 8080:8080 go-app-template
 ```

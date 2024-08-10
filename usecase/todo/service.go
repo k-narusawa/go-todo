@@ -1,9 +1,9 @@
 package todo
 
 import (
-	"go-rest-template/domain"
-	"go-rest-template/domain/repository"
-	"go-rest-template/domain/value"
+	"go-app-template/domain"
+	"go-app-template/domain/repository"
+	"go-app-template/domain/value"
 )
 
 type Service struct {

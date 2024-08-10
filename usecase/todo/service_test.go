@@ -1,10 +1,10 @@
 package todo_test
 
 import (
-	"go-rest-template/domain"
-	"go-rest-template/domain/value"
-	"go-rest-template/usecase/mocks"
-	"go-rest-template/usecase/todo"
+	"go-app-template/domain"
+	"go-app-template/domain/value"
+	"go-app-template/usecase/mocks"
+	"go-app-template/usecase/todo"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

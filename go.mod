@@ -1,4 +1,4 @@
-module go-rest-template
+module go-app-template
 
 go 1.22.2
 

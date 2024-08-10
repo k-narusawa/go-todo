@@ -1,10 +1,10 @@
 package main
 
 import (
-	"go-rest-template/internal/repository"
-	"go-rest-template/internal/rest"
-	"go-rest-template/usecase/todo"
-	"go-rest-template/usecase/user"
+	"go-app-template/internal/repository"
+	"go-app-template/internal/rest"
+	"go-app-template/usecase/todo"
+	"go-app-template/usecase/user"
 	"log"
 	"os"
 
