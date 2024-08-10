@@ -26,7 +26,7 @@ func main() {
 	todoSvc := todo.NewService(todoRepo, userRepo)
 
 	rest.NewUserHandler(e, userSvc)
-	rest.NewToDoHandler(e, *todoSvc)
+	rest.NewToDoHandler(e, todoSvc)
 
 	e.GET("/health", healthCheck)
 

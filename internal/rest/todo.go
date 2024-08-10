@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"go-todo/domain"
 	"go-todo/domain/value"
 	"go-todo/usecase/todo"
 
@@ -9,13 +10,19 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type ToDoHandler struct {
-	todoService todo.Service
+type ToDoService interface {
+	Create(todo.CreateToDoInput) (*domain.ToDo, error)
+	FindByUserId(value.UserID) ([]domain.ToDo, error)
+	ChangeToDoDone(todo.ChangeStatusInput) (*domain.ToDo, error)
 }
 
-func NewToDoHandler(e *echo.Echo, todoService todo.Service) {
+type ToDoHandler struct {
+	ToDoService ToDoService
+}
+
+func NewToDoHandler(e *echo.Echo, todoService ToDoService) {
 	handler := &ToDoHandler{
-		todoService: todoService,
+		ToDoService: todoService,
 	}
 
 	users := e.Group("/users/:user_id")
@@ -32,7 +39,7 @@ func (h *ToDoHandler) Create(c echo.Context) error {
 	}
 	in.UserID = value.OfUserID(c.Param("user_id"))
 
-	todo, err := h.todoService.Create(in)
+	todo, err := h.ToDoService.Create(in)
 	if err != nil {
 		return middleware.HandleError(c, err)
 	}
@@ -43,7 +50,7 @@ func (h *ToDoHandler) Create(c echo.Context) error {
 func (h *ToDoHandler) FindByUserId(c echo.Context) error {
 	userId := value.OfUserID(c.Param("user_id"))
 
-	todos, err := h.todoService.FindByUserId(userId)
+	todos, err := h.ToDoService.FindByUserId(userId)
 	if err != nil {
 		return middleware.HandleError(c, err)
 	}
@@ -62,7 +69,7 @@ func (h *ToDoHandler) ChangeToDoDone(c echo.Context) error {
 	in.UserID = userId
 	in.ToDoID = todoId
 
-	todo, err := h.todoService.ChangeToDoDone(in)
+	todo, err := h.ToDoService.ChangeToDoDone(in)
 	if err != nil {
 		return middleware.HandleError(c, err)
 	}
