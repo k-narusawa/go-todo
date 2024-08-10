@@ -1,9 +1,9 @@
 package user
 
 import (
-	"go-todo/domain"
-	"go-todo/domain/repository"
-	"go-todo/domain/value"
+	"go-rest-template/domain"
+	"go-rest-template/domain/repository"
+	"go-rest-template/domain/value"
 )
 
 type Service struct {

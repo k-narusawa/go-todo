@@ -1,4 +1,4 @@
-module go-todo
+module go-rest-template
 
 go 1.22.2
 

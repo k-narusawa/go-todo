@@ -1,10 +1,10 @@
 package main
 
 import (
-	"go-todo/internal/repository"
-	"go-todo/internal/rest"
-	"go-todo/usecase/todo"
-	"go-todo/usecase/user"
+	"go-rest-template/internal/repository"
+	"go-rest-template/internal/rest"
+	"go-rest-template/usecase/todo"
+	"go-rest-template/usecase/user"
 	"log"
 	"os"
 

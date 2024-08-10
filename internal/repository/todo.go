@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"go-todo/domain"
-	"go-todo/domain/value"
+	"go-rest-template/domain"
+	"go-rest-template/domain/value"
 )
 
 type ToDoRepository struct{}

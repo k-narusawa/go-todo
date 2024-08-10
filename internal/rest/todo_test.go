@@ -1,10 +1,10 @@
 package rest_test
 
 import (
-	"go-todo/domain"
-	"go-todo/domain/value"
-	"go-todo/internal/rest"
-	"go-todo/internal/rest/mocks"
+	"go-rest-template/domain"
+	"go-rest-template/domain/value"
+	"go-rest-template/internal/rest"
+	"go-rest-template/internal/rest/mocks"
 	"net/http"
 	"net/http/httptest"
 	"strings"
