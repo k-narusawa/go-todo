@@ -3,8 +3,11 @@ package main
 import (
 	"go-app-template/internal/repository"
 	"go-app-template/internal/rest"
+	"go-app-template/internal/web"
 	"go-app-template/usecase/todo"
 	"go-app-template/usecase/user"
+	"html/template"
+	"io"
 	"log"
 	"os"
 
@@ -12,13 +15,23 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+type Template struct {
+	templates *template.Template
+}
+
 const defaultAddress = ":8080"
 
 func main() {
 	e := echo.New()
 
+	t := &Template{
+		templates: template.Must(template.ParseGlob("views/*.html")),
+	}
+
 	e.Use(middleware.CORS())
 	e.Use(middleware.Logger())
+
+	e.Renderer = t
 
 	userRepo := repository.NewUserRepository()
 	todoRepo := repository.NewToDoRepository()
@@ -27,6 +40,8 @@ func main() {
 
 	rest.NewUserHandler(e, userSvc)
 	rest.NewToDoHandler(e, todoSvc)
+
+	web.NewWebUserHandler(e, userSvc, todoSvc)
 
 	e.GET("/health", healthCheck)
 
@@ -39,4 +54,8 @@ func main() {
 
 func healthCheck(c echo.Context) error {
 	return c.String(200, "OK")
+}
+
+func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
 }
