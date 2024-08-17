@@ -11,6 +11,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -19,9 +20,21 @@ type Template struct {
 	templates *template.Template
 }
 
-const defaultAddress = ":8080"
+const (
+	defaultAddress = "8080"
+)
+
+func init() {
+	log.Printf("Loading .env file")
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
 
 func main() {
+	address := os.Getenv("SERVER_ADDRESS")
+
 	e := echo.New()
 
 	t := &Template{
@@ -45,7 +58,6 @@ func main() {
 
 	e.GET("/health", healthCheck)
 
-	address := os.Getenv("SERVER_ADDRESS")
 	if address == "" {
 		address = defaultAddress
 	}
