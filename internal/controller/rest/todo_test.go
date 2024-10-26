@@ -3,8 +3,8 @@ package rest_test
 import (
 	"go-app-template/domain"
 	"go-app-template/domain/value"
-	"go-app-template/internal/rest"
-	"go-app-template/internal/rest/mocks"
+	"go-app-template/internal/controller/rest"
+	"go-app-template/internal/controller/rest/mocks"
 	"net/http"
 	"net/http/httptest"
 	"strings"
