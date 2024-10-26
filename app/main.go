@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go-app-template/internal/repository"
-	"go-app-template/internal/rest"
-	"go-app-template/internal/web"
+	"go-app-template/internal/controller/rest"
+	"go-app-template/internal/controller/web"
+	"go-app-template/internal/gateway/repository"
 	"go-app-template/usecase/todo"
 	"go-app-template/usecase/user"
 	"html/template"
